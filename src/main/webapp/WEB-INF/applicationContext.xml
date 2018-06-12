@@ -60,7 +60,4 @@
             <security:password-encoder hash="bcrypt" />
         </security:authentication-provider>
     </security:authentication-manager>
-
-    
-
 </beans>

@@ -19,4 +19,14 @@ public class MainController {
     public String index() {
         return "index";
     }
+    
+    @RequestMapping("/register")
+    public String register() {
+        return "register";
+    }
+    
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
+    }
 }

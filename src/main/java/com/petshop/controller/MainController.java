@@ -85,4 +85,9 @@ public class MainController {
 
         return "login";
     }
+    
+    @RequestMapping("/about")
+    public String about() {
+        return "about";
+    }
 }

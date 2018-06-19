@@ -4,14 +4,14 @@
     Author     : micic
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<%@ include file="/WEB-INF/jsp/partials/header.jsp" %>
+
+<div class="container-wrapper">
+    <div class="container">
+        <div class="page-header">
+            <p> This is our admin page </p>
+        </div>  
+    </div>
+</div>
+
+<%@ include file="/WEB-INF/jsp/partials/footer.jsp" %>

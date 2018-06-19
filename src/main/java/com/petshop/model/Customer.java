@@ -43,13 +43,10 @@ public class Customer {
     @NotEmpty(message = "You must enter your city")
     private String customerCity;
 
-    @NotEmpty(message = "You must enter your country")
-    private String customerCountry;
-
     public Customer() {
     }
 
-    public Customer(int customerId, String customerName, String customerEmail, String customerPhone, String username, String password, boolean enabled, String customerStreetName, String customerCity, String customerCountry) {
+    public Customer(int customerId, String customerName, String customerEmail, String customerPhone, String username, String password, boolean enabled, String customerStreetName, String customerCity) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
@@ -59,7 +56,6 @@ public class Customer {
         this.enabled = enabled;
         this.customerStreetName = customerStreetName;
         this.customerCity = customerCity;
-        this.customerCountry = customerCountry;
     }
 
     public int getCustomerId() {
@@ -134,16 +130,8 @@ public class Customer {
         this.customerCity = customerCity;
     }
 
-    public String getCustomerCountry() {
-        return customerCountry;
-    }
-
-    public void setCustomerCountry(String customerCountry) {
-        this.customerCountry = customerCountry;
-    }
-
     @Override
     public String toString() {
-        return "Customer{" + "customerId=" + customerId + ", customerName=" + customerName + ", customerEmail=" + customerEmail + ", customerPhone=" + customerPhone + ", username=" + username + ", password=" + password + ", enabled=" + enabled + ", customerStreetName=" + customerStreetName + ", customerCity=" + customerCity + ", customerCountry=" + customerCountry + '}';
+        return "Customer{" + "customerId=" + customerId + ", customerName=" + customerName + ", customerEmail=" + customerEmail + ", customerPhone=" + customerPhone + ", username=" + username + ", password=" + password + ", enabled=" + enabled + ", customerStreetName=" + customerStreetName + ", customerCity=" + customerCity +'}';
     }
 }

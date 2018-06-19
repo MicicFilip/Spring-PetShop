@@ -16,12 +16,10 @@
         <meta name="author" content="">
 
         <title>PetShop</title>
-
        
         <!-- JQuery -->
         <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
-
 
         <!-- Bootstrap core CSS -->
         <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
@@ -31,15 +29,12 @@
 
         <!-- Main CSS -->
         <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
-
         
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css" rel="stylesheet">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     </head>
-    <!-- NAVBAR
-    ================================================== -->
     <body>
         <div class="navbar-wrapper">
             <div class="container">
@@ -58,8 +53,26 @@
                         <div id="navbar" class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
                                 <li><a href="<c:url value="/" />">Home</a></li>
+                                <li><a href="<c:url value="/product/allProducts/all" />">Products</a></li>
+                                <li><a href="<c:url value="/about" />">About</a></li>
                             </ul>
                             <ul class="nav navbar-nav pull-right">
+                                <c:if test="${pageContext.request.userPrincipal.name != null}">
+                                    <li><a>Welcome: ${pageContext.request.userPrincipal.name}</a></li>
+
+                                    <c:if test="${pageContext.request.isUserInRole('ROLE_USER')}">
+                                        <li><a href="<c:url value="/customer/cart" />">Shopping Cart</a></li>
+                                    </c:if>
+
+                                    <c:if test="${pageContext.request.isUserInRole('ROLE_ADMIN')}">
+                                        <li><a href="<c:url value="/admin" />">Admin Dashboard</a></li>
+                                    </c:if>
+                                    
+                                    <c:if test="${pageContext.request.userPrincipal.name != null}">
+                                        <li><a href="<c:url value="/j_spring_security_logout" />">Logout</a></li>
+                                    </c:if>
+                                </c:if>
+
                                 <c:if test="${pageContext.request.userPrincipal.name == null}">
                                     <li><a href="<c:url value="/login" />">Login</a></li>
                                     <li><a href="<c:url value="/register" />">Register</a></li>

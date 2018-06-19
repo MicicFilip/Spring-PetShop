@@ -27,8 +27,8 @@ CREATE TABLE `authorities` (
 -- Dumping data for table `authorities`
 --
 
--- INSERT INTO `authorities` (`authoritiesId`, `username`, `authority`) VALUES
--- (5, 'admin', 'ROLE_ADMIN');
+INSERT INTO `authorities` (`authoritiesId`, `username`, `authority`) VALUES
+(1, 'micic', 'ROLE_ADMIN');
 
 
 -- --------------------------------------------------------
@@ -53,8 +53,8 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
--- INSERT INTO `customer` (`customerId`, `customerName`, `customerEmail`, `customerPhone`, `customerStreetName`, `customerCity`, `customerCountry`, `username`, `password`, `enabled`) VALUES
--- (1, 'Filip', 'filip@mail.com', 'filip', 'filip', 'filip', 'filip', 'filip.micic.2388', 'filip', 1);
+INSERT INTO `customer` (`customerId`, `customerName`, `customerEmail`, `customerPhone`, `customerStreetName`, `customerCity`, `username`, `password`, `enabled`) VALUES
+(1, 'Filip', 'filip.micic.2388@metropolitan.ac.rs', '062123123', 'Bulver Kralja Aleksandra', 'Beograd', 'micic', '$2a$10$77NlIesyxJP1ZouzKhV6nOXdmfWlkxIRHTBM1QIaVU93XqgdvdKGy', 1);
 
 -- --------------------------------------------------------
 
@@ -120,7 +120,7 @@ INSERT INTO `product` (`productId`, `productName`, `productDescription`, `produc
 CREATE TABLE `users` (
   `usersId` int(11) NOT NULL,
   `username` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `password` varchar(245) NOT NULL,
   `enabled` tinyint(4) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -129,7 +129,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`usersId`, `username`, `password`, `enabled`) VALUES
-(4, 'filip.micic.2388', 'filip', 1);
+(1, 'micic', '$2a$10$77NlIesyxJP1ZouzKhV6nOXdmfWlkxIRHTBM1QIaVU93XqgdvdKGy', 1);
 
 --
 -- Indexes for dumped tables

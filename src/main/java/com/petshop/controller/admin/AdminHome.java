@@ -30,14 +30,10 @@ public class AdminHome {
     @Autowired
     private CustomerService customerService;
 
-   
-
     @RequestMapping
     public String adminPage() {
         return "admin";
     }
-
-    
 
     @RequestMapping("/productInventory")
     public String productInventory(Model model) {

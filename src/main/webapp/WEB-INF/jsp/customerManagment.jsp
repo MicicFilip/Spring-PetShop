@@ -1,6 +1,6 @@
 <%-- 
-    Document   : about
-    Created on : Jun 13, 2018, 7:02:05 PM
+    Document   : customerManagment
+    Created on : Jun 19, 2018, 8:47:51 PM
     Author     : micic
 --%>
 
@@ -9,7 +9,7 @@
 <div class="container-wrapper">
     <div class="container">
         <div class="page-header">
-            <p> This is our about page </p>
+            <p> This is our customer management page </p>
         </div>  
     </div>
 </div>

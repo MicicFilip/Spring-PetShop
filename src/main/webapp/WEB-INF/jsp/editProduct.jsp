@@ -1,6 +1,6 @@
 <%-- 
-    Document   : about
-    Created on : Jun 13, 2018, 7:02:05 PM
+    Document   : editProduct
+    Created on : Jun 19, 2018, 8:47:02 PM
     Author     : micic
 --%>
 
@@ -9,7 +9,7 @@
 <div class="container-wrapper">
     <div class="container">
         <div class="page-header">
-            <p> This is our about page </p>
+            <p> This is our edit product </p>
         </div>  
     </div>
 </div>

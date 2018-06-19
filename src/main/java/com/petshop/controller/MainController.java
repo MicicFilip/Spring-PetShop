@@ -45,7 +45,7 @@ public class MainController {
     public String registerCustomerPost(@Valid @ModelAttribute("customer") Customer customer, BindingResult result, Model model) {
 
         if (result.hasErrors()) {
-            return "registerCustomer";
+            return "register";
         }
 
         List<Customer> customerList = customerService.getAllCustomers();

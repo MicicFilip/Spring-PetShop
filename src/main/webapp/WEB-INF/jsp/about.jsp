@@ -8,10 +8,10 @@
 
 <div class="container-wrapper">
     <div class="container">
+
         <div class="page-header">
-            <p> This is our about page </p>
-        </div>  
-    </div>
-</div>
+            <h1>About Us</h1>
+            <p>We are a PetShop that offers any product to take care of your pet!.</p>
+        </div>
 
 <%@ include file="/WEB-INF/jsp/partials/footer.jsp" %>

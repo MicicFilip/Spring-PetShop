@@ -87,59 +87,46 @@ public class AdminProduct {
     @RequestMapping(value = "/product/editProduct", method = RequestMethod.POST)
     public String editProductPost(@Valid @ModelAttribute("product") Product product, HttpSession session, 
             BindingResult result, HttpServletRequest request, @RequestParam("file") MultipartFile file) throws Exception {
-
-            ServletContext context = session.getServletContext();
-            String path = context.getInitParameter("upload.location");
-            String filename = file.getOriginalFilename();
-
-            byte[] bytes = file.getBytes();
-            try (BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(
-                    new File(path + File.separator + filename)))) {
-                stream.write(bytes);
-                stream.flush();
-            }
-//        if (result.hasErrors()) {
-//            return "editProduct";
-//        }
+            
         
-//        MultipartFile productImage = product.getProductImage();
-//        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-//        path = Paths.get(rootDirectory + "/WEB-INF/resources/images/" + product.getProductId() + ".png");
-//
-//        if (productImage != null && !productImage.isEmpty()) {
-//            try {
-//                productImage.transferTo(new File(path.toString()));
-//            } catch (Exception ex) {
-//                ex.printStackTrace();
-//                throw new RuntimeException("Product image saving failed", ex);
-//            }
-//        }
-        
-        System.out.println("==== PRODUCT IMAGE = " + file);
-        if (product.getProductImage() == null){
-            System.out.println("================= USAO SAM ===============" );
+        ServletContext context = session.getServletContext();
+        String path = context.getInitParameter("upload.location");
+        String filename = file.getOriginalFilename();
+
+        byte[] bytes = file.getBytes();
+        try (BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(
+                new File(path + File.separator + filename)))) {
+            stream.write(bytes);
+            stream.flush();
         }
         
-        System.out.println("========GRESKA======" + product);
+        product.setProductImage("/PetShop/resources/images/" + filename);
         productService.editProduct(product);
 
         return "redirect:/admin/productInventory";
     }
 
     @RequestMapping("/product/deleteProduct/{id}")
-    public String deleteProduct(@PathVariable int id, Model model, HttpServletRequest request) {
-        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-        path = Paths.get(rootDirectory + "/WEB-INF/resources/images/" + id + ".jpg");
-
-        if (Files.exists(path)) {
+    public String deleteProduct(@PathVariable int id, Model model, HttpServletRequest request, 
+                  HttpSession session) {
+        Product product = productService.getProductById(id);
+        
+        if (product.getProductImage() != null){
+            ServletContext context = session.getServletContext();
+            String path = context.getInitParameter("upload.location");
+            
+            File file = new File(path.toString());
             try {
-                Files.delete(path);
+                if (file.exists()) {
+                    file.delete();
+                }
             } catch (Exception ex) {
-                ex.printStackTrace();
+                    ex.printStackTrace();
             }
         }
+        
 
-        Product product = productService.getProductById(id);
+        
         productService.deleteProduct(product);
 
         return "redirect:/admin/productInventory";

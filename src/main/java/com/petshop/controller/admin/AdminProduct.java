@@ -46,11 +46,7 @@ public class AdminProduct {
 
     @RequestMapping("/product/addProduct")
     public ModelAndView addProduct(ModelMap model, Product product) {
-        // Product product = new Product();
-        //productService.addProduct();
-        product.setProductCategory("food");
-        //      product.setProductCondition("new");
-        //product.setProductStatus("active");
+
         model.addAttribute("product", new Product());
 
         return new ModelAndView("addProduct", "command", new Product());
@@ -71,11 +67,9 @@ public class AdminProduct {
             stream.flush();
         }
 
-        //System.out.println("Bajtovi iz kontrolera: " + bytes);
-        product.setProductImage("/MetPetShop/resources/images/" + filename);
+        product.setProductImage("/PetShop/resources/images/" + filename);
         model.addObject("object", product);
         product.setProductId(productService.getCount() + 1);
-        //System.out.println("Artikl iz MainControllera: " + product);
         productService.addProduct(product);
         model.setViewName("redirect:/admin/productInventory");
         return model;
@@ -85,19 +79,29 @@ public class AdminProduct {
     @RequestMapping("/product/editProduct/{id}")
     public String editProduct(@PathVariable("id") int id, Model model) {
         Product product = productService.getProductById(id);
-
         model.addAttribute("product", product);
 
         return "editProduct";
     }
 
     @RequestMapping(value = "/product/editProduct", method = RequestMethod.POST)
-    public String editProductPost(@Valid @ModelAttribute("product") Product product, BindingResult result, HttpServletRequest request) {
+    public String editProductPost(@Valid @ModelAttribute("product") Product product, HttpSession session, 
+            BindingResult result, HttpServletRequest request, @RequestParam("file") MultipartFile file) throws Exception {
 
-        if (result.hasErrors()) {
-            return "editProduct";
-        }
+            ServletContext context = session.getServletContext();
+            String path = context.getInitParameter("upload.location");
+            String filename = file.getOriginalFilename();
 
+            byte[] bytes = file.getBytes();
+            try (BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(
+                    new File(path + File.separator + filename)))) {
+                stream.write(bytes);
+                stream.flush();
+            }
+//        if (result.hasErrors()) {
+//            return "editProduct";
+//        }
+        
 //        MultipartFile productImage = product.getProductImage();
 //        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 //        path = Paths.get(rootDirectory + "/WEB-INF/resources/images/" + product.getProductId() + ".png");
@@ -110,6 +114,13 @@ public class AdminProduct {
 //                throw new RuntimeException("Product image saving failed", ex);
 //            }
 //        }
+        
+        System.out.println("==== PRODUCT IMAGE = " + file);
+        if (product.getProductImage() == null){
+            System.out.println("================= USAO SAM ===============" );
+        }
+        
+        System.out.println("========GRESKA======" + product);
         productService.editProduct(product);
 
         return "redirect:/admin/productInventory";
@@ -118,7 +129,7 @@ public class AdminProduct {
     @RequestMapping("/product/deleteProduct/{id}")
     public String deleteProduct(@PathVariable int id, Model model, HttpServletRequest request) {
         String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-        path = Paths.get(rootDirectory + "/WEB-INF/resources/images/" + id + ".png");
+        path = Paths.get(rootDirectory + "/WEB-INF/resources/images/" + id + ".jpg");
 
         if (Files.exists(path)) {
             try {

@@ -32,7 +32,7 @@ public class AdminHome {
 
     @RequestMapping
     public String adminPage() {
-        return "admin";
+        return "adminDashboard";
     }
 
     @RequestMapping("/productInventory")

@@ -5,12 +5,9 @@
  */
 package com.petshop.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -51,9 +48,6 @@ public class Product {
     @Column(name = "productImage")
     private String productImage;
 
-//    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    @JsonIgnore
-//    private List<CartItem> cartItemList;
     public Product() {
     }
 

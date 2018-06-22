@@ -26,7 +26,6 @@ public class ProductDaoImpl implements ProductDao {
     @Autowired
     private SessionFactory sessionFactory;
 
-    //kreiramo geter za sesiju
     public Session getSession() {
         return sessionFactory.getCurrentSession();
     }
@@ -52,7 +51,11 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public Product addProduct(Product product) {
-        return (Product) getSession().merge(product);
+        Session session = sessionFactory.getCurrentSession();
+        session.save(product);
+        session.flush();
+        
+        return (Product) product;
     }
 
     @Override

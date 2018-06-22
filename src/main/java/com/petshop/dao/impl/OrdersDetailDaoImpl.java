@@ -6,8 +6,9 @@
 package com.petshop.dao.impl;
 
 import com.petshop.dao.OrdersDetailDao;
-import com.petshop.model.Orders;
 import com.petshop.model.OrdersDetail;
+import com.petshop.model.Product;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -26,7 +27,7 @@ public class OrdersDetailDaoImpl implements OrdersDetailDao {
 
     @Autowired
     private SessionFactory sessionFactory;
-
+    
     @Override
     public void addOrdersDetail(OrdersDetail ordersDetail) {
         Session session = sessionFactory.getCurrentSession();
@@ -40,7 +41,7 @@ public class OrdersDetailDaoImpl implements OrdersDetailDao {
         Query query = session.createQuery("from OrdersDetail where ordersId = ?");
         query.setInteger(0, id);
         List<OrdersDetail> ordersList = query.list();
-
+        
         return ordersList;
     }
 }

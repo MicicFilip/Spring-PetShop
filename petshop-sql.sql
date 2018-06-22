@@ -1,4 +1,15 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jun 22, 2018 at 06:58 PM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.11
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -28,8 +39,8 @@ CREATE TABLE `authorities` (
 --
 
 INSERT INTO `authorities` (`authoritiesId`, `username`, `authority`) VALUES
-(1, 'micic', 'ROLE_ADMIN');
-
+(7, 'admin1', 'ROLE_ADMIN'),
+(8, 'user1', 'ROLE_USER');
 
 -- --------------------------------------------------------
 
@@ -54,7 +65,8 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`customerId`, `customerName`, `customerEmail`, `customerPhone`, `customerStreetName`, `customerCity`, `username`, `password`, `enabled`) VALUES
-(1, 'Filip', 'filip.micic.2388@metropolitan.ac.rs', '062123123', 'Bulver Kralja Aleksandra', 'Beograd', 'micic', '$2a$10$77NlIesyxJP1ZouzKhV6nOXdmfWlkxIRHTBM1QIaVU93XqgdvdKGy', 1);
+(7, 'Admin One', 'admin1@email.com', '062111111', 'Makenzijeva 23', 'Beograd', 'admin1', '$2a$10$G/MbA55hi.h580e46kMJEekE19eijnZh0vd8m9KMSBUgaywYRUvzq', 1),
+(8, 'User One', 'user1@email.com', '062222222', 'Kataniceva 33', 'Beograd', 'user1', '$2a$10$b6bAO6eS185ah4DjZdWI6ew.8mWNx0yX5euI7BZAT0FViMx0MYWS.', 1);
 
 -- --------------------------------------------------------
 
@@ -106,10 +118,13 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`productId`, `productName`, `productDescription`, `productCategory`, `productPrice`, `productStatus`, `unitInStock`, `productManufacturer`, `productImage`) VALUES
-(1, 'Adult sa govedinom i zivinom', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed urna nunc, mollis vitae pretium vel, tincidunt at erat.', 'Food', 25, 'active', 60, 'Pedigree', '/MetPetShop/resources/images/dogfood1.jpg'),
-(2, 'Come''n Get It', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed urna nunc, mollis vitae pretium vel, tincidunt at erat.', 'Food', 15, 'active', 30, 'Alpo', '/MetPetShop/resources/images/dogfood2.jpg'),
-(3, 'Meaty Selections', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed urna nunc, mollis vitae pretium vel, tincidunt at erat.', 'Food', 17, 'active', 23, 'Whiskas', '/MetPetShop/resources/images/catfood1.jpg'),
-(4, 'Ogrlica protiv krpelja', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed urna nunc, mollis vitae pretium vel, tincidunt at erat.', 'Grooming', 5, 'active', 150, 'Foresto', '/MetPetShop/resources/images/grooming1.jpg');
+(5, 'Adult Dog Food', 'Pedigree adult food for dogs', 'Food', 150, 'active', 100, 'Pedigree', '/PetShop/resources/images/pedigre-adult-dog-food.jpg'),
+(6, 'Adult Cat Food', 'Meow Mix adult cat food', 'Food', 200, 'active', 100, 'Meow Mix', '/PetShop/resources/images/cat-food-meow-mix.jpg'),
+(7, 'Small Dog Food', 'Pedigree dog food for small dogs', 'Food', 150, 'active', 50, 'Pedigree', '/PetShop/resources/images/pedigree-small-dog-food.jpg'),
+(8, 'Mouse Toy', 'This product is a cat toy in a shape of a mouse', 'Toys', 50, 'active', 20, 'Chubleez', '/PetShop/resources/images/cat-toy-1.jpg'),
+(9, 'Chewy Vuiton', 'Chewy Vuiton squeaky toy for dogs', 'Toys', 400, 'active', 20, 'Louis Vuitton', '/PetShop/resources/images/dog-toy-chewyvuiton.jpg'),
+(10, 'Grooming Wipes', 'Grooming wet wipes for cats and dogs', 'Grooming', 350, 'active', 400, 'PupMate', '/PetShop/resources/images/cat-dog-grooming-wipes.jpg'),
+(11, 'English Bulldog Coat Oil ', 'Coat oil for English Bulldogs made by MagicCoat', 'Grooming', 700, 'active', 15, 'MagicCoat', '/PetShop/resources/images/bulldog-coat-oil.jpg');
 
 -- --------------------------------------------------------
 
@@ -129,7 +144,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`usersId`, `username`, `password`, `enabled`) VALUES
-(1, 'micic', '$2a$10$77NlIesyxJP1ZouzKhV6nOXdmfWlkxIRHTBM1QIaVU93XqgdvdKGy', 1);
+(7, 'admin1', '$2a$10$G/MbA55hi.h580e46kMJEekE19eijnZh0vd8m9KMSBUgaywYRUvzq', 1),
+(8, 'user1', '$2a$10$b6bAO6eS185ah4DjZdWI6ew.8mWNx0yX5euI7BZAT0FViMx0MYWS.', 1);
 
 --
 -- Indexes for dumped tables
@@ -149,7 +165,8 @@ ALTER TABLE `authorities`
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`customerId`),
   ADD UNIQUE KEY `uni_username_email` (`customerEmail`,`username`),
-  ADD KEY `fk_username_idx` (`username`);
+  ADD KEY `fk_username_idx` (`username`),
+  ADD KEY `enabled` (`enabled`);
 
 --
 -- Indexes for table `orders`
@@ -177,7 +194,8 @@ ALTER TABLE `product`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`usersId`),
-  ADD KEY `Index 2` (`username`);
+  ADD KEY `Index 2` (`username`),
+  ADD KEY `enabled_fkey` (`enabled`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -187,32 +205,38 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `authorities`
 --
 ALTER TABLE `authorities`
-  MODIFY `authoritiesId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `authoritiesId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `customerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `ordersId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ordersId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `ordersdetail`
 --
 ALTER TABLE `ordersdetail`
-  MODIFY `ordersDetailId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ordersDetailId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `usersId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `usersId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- Constraints for dumped tables
 --
@@ -227,7 +251,7 @@ ALTER TABLE `authorities`
 -- Constraints for table `customer`
 --
 ALTER TABLE `customer`
-  ADD CONSTRAINT `FK_customer_users` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
+  ADD CONSTRAINT `FK_customer_users_username` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `orders`
@@ -241,6 +265,7 @@ ALTER TABLE `orders`
 ALTER TABLE `ordersdetail`
   ADD CONSTRAINT `FK_ordersdetail_orders` FOREIGN KEY (`ordersId`) REFERENCES `orders` (`ordersId`),
   ADD CONSTRAINT `FK_ordersdetail_product` FOREIGN KEY (`productId`) REFERENCES `product` (`productId`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

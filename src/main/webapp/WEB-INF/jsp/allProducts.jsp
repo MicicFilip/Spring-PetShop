@@ -16,7 +16,7 @@
                 <li> 
                     <c:choose>
                         <c:when test="${product.productImage != null}">
-                            <img src="${product.productImage}" />
+                            <img src="${product.productImage}" style="width:auto; max-height: 200px; height: 70%;"/>
                         </c:when>
                         <c:otherwise>
                             <img src="<c:url value="/resources/images/404.png" />" />

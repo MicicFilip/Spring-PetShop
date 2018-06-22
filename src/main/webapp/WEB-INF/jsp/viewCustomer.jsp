@@ -30,8 +30,7 @@
                 <li>     
                     <h2>Order Status: ${customerOrders.ordersName}</h2>
                     <h4>Order Date: ${customerOrders.dateCreation}</h4>
-                    <a href="<spring:url value="/admin/customer/view/order/${customerOrders.ordersId}" />">${customerOrders.ordersId}</a>
-                    <h4>View <b>${customer.username}</b>'s order</h4>
+                    <h4>View <a href="<spring:url value="/admin/customer/view/order/${customerOrders.ordersId}" />"><b>${customer.username}</b>'s</a> order</h4>
                 </li>
                 </c:forEach>
             </ul>

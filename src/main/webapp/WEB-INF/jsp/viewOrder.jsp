@@ -11,7 +11,7 @@
 <div class="container-wrapper">
     <div class="container">
         <div class="page-header">
-            <h1>Customer Detail</h1>
+            <h1>Order details</h1>
         </div>
 
         <div class="container">
@@ -19,9 +19,8 @@
                 <div class="col-md-5">
                     <ul class="rig columns-2">
                         <c:forEach items="${ordersDetails}" var="ordersDetails">     
-                            <li>     
-                                <h2>Product Id: ${ordersDetails.productId}</h2>
-                                <h4>Orders Id: ${ordersDetails.ordersId}</h4>
+                            <li>
+                                <h2><a href="<spring:url value="/product/viewProduct/${ordersDetails.productId}" />">View ordered product</a></h2>
                                 <h4>Price: ${ordersDetails.price} RSD</h4>
                                 <h4>Quantity ${ordersDetails.quantity}</h4>
                             </li>

@@ -40,7 +40,7 @@
                 </thead>
                 <c:forEach items="${products}" var="product">
                     <tr>
-                        <td><img src="${product.productImage}" alt="image" style="width:100%"/></td>
+                        <td><img src="${product.productImage}" alt="image" style="width:auto; max-height: 200px; height: 70%;"/></td>
                         <td>${product.productName}</td>
                         <td>${product.productCategory}</td>
                         <td>${product.productPrice} RSD </td>

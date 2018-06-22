@@ -16,7 +16,7 @@
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img class="first-slide home-image" src="<c:url value="/resources/images/back1.jpg" />" alt="First slide">
+            <img class="first-slide home-image" src="<c:url value="/resources/images/back-1.jpg" />" alt="First slide">
             <div class="container">
                 <div class="carousel-caption">
                     <h1>Welcome to PetShop </h1>
@@ -26,7 +26,7 @@
         </div>
 
         <div class="item">
-            <img class="second-slide home-image" src="<c:url value="/resources/images/back2.jpg" />" alt="Second slide">
+            <img class="second-slide home-image" src="<c:url value="/resources/images/back-2.jpg" />" alt="Second slide">
             <div class="container">
                 <div class="carousel-caption">
                     <h1>Welcome to PetShop </h1>
@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="item">
-            <img class="third-slide home-image " src="<c:url value="/resources/images/back3.jpg" />" alt="Third slide">
+            <img class="third-slide home-image " src="<c:url value="/resources/images/back-3.jpg" />" alt="Third slide">
             <div class="container">
                 <div class="carousel-caption">
                     <h1>Welcome to PetShop </h1>
@@ -57,20 +57,19 @@
 
 <div class="container marketing">
 
-    <!-- Three columns of text below the carousel -->
     <div class="row">
         <div class="col-lg-4">
-            <img class="img-circle" src="<c:url value="/resources/images/front1.jpg"/>" alt="Dog Food Image" width="140" height="140">
+            <img class="img-circle" src="<c:url value="/resources/images/dog-food-front.jpg"/>" alt="Dog Food Image" width="140" height="140">
             <h2>Dog Food</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed urna nunc, mollis vitae pretium vel, tincidunt at erat.</p>
         </div>
         <div class="col-lg-4">
-            <img class="img-circle" src="<c:url value="/resources/images/front2.jpg"/>" alt="Grooming Products Image" width="140" height="140">
+            <img class="img-circle" src="<c:url value="/resources/images/cat-grooming-front.jpg"/>" alt="Grooming Products Image" width="140" height="140">
             <h2>Grooming Products</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed urna nunc, mollis vitae pretium vel, tincidunt at erat.</p>
         </div>
         <div class="col-lg-4">
-            <img class="img-circle" src="<c:url value="/resources/images/front3.jpeg"/>" alt="Cat Food Image" width="140" height="140">
+            <img class="img-circle" src="<c:url value="/resources/images/cat-food-front.jpg"/>" alt="Cat Food Image" width="140" height="140">
             <h2>Cat Food</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed urna nunc, mollis vitae pretium vel, tincidunt at erat.</p>
         </div>

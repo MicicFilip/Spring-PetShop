@@ -30,7 +30,7 @@
     <context-param>
         <param-name>upload.location</param-name>
         <param-value>
-            C:\Users\micic\Desktop\Filip\Spring-PetShop\src\main\webapp\WEB-INF\resources\images
+            C:\Users\micic\Desktop\IT320\Shop\Spring-PetShop\src\main\webapp\WEB-INF\resources\images
         </param-value>
     </context-param>
     

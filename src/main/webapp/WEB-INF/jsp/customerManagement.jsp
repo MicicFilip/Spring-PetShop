@@ -36,19 +36,20 @@
                 </tr>
             </thead>
             <c:forEach items="${usersList}" var="users">
-                <tr>
-                    
-                    <td><a href="<spring:url value="/admin/customer/view/${users.usersId}" />">${users.username}</a></td>
-                    <td>${users.enabled}</td>
-                    <c:choose>
-                        <c:when test="${users.enabled == true}">
-                            <td><a href="<spring:url value="/admin/customer/ban/${users.username}" />"><span class="glyphicon glyphicon-remove" style="color: red;"></span></a></td>    
-                        </c:when>
-                        <c:otherwise>
-                            <td><a href="<spring:url value="/admin/customer/unban/${users.username}" />"><span class="glyphicon glyphicon-ok" style="color: green;"></span></a></td>
-                        </c:otherwise>
-                    </c:choose>
-                </tr>
+                <tr> 
+                    <c:if test="${pageContext.request.userPrincipal.name != users.username}">
+                        <td><a href="<spring:url value="/admin/customer/view/${users.usersId}" />">${users.username}</a></td>
+                        <td>${users.enabled}</td>
+                        <c:choose>
+                            <c:when test="${users.enabled == true}">
+                                <td><a href="<spring:url value="/admin/customer/ban/${users.username}" />"><span class="glyphicon glyphicon-remove" style="color: red;"></span></a></td>    
+                            </c:when>
+                            <c:otherwise>
+                                <td><a href="<spring:url value="/admin/customer/unban/${users.username}" />"><span class="glyphicon glyphicon-ok" style="color: green;"></span></a></td>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:if>
+                </tr> 
             </c:forEach>
         </table>
 

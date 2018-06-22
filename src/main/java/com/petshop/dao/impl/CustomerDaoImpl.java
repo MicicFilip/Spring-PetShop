@@ -40,9 +40,6 @@ public class CustomerDaoImpl implements CustomerDao {
     public Session getSession() {
         return sessionFactory.getCurrentSession();
     }
-    
-//    @Autowired
-//    private SessionFactory sessionFactory;
 
     @Override
     public void registerCustomer(Customer customer) {
@@ -50,20 +47,24 @@ public class CustomerDaoImpl implements CustomerDao {
         
         // Bcrypt hashing methods called in setPassword
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
-        // session.saveOrUpdate(customer);
+        
         Users newUser = new Users();
-        newUser.setUsername(customer.getUsername());
-        newUser.setPassword(passwordEncoder.encode(customer.getPassword()));
-        newUser.setEnabled(true);
 
+        String customerPassword = customer.getPassword();
+        String hashedPassword = passwordEncoder.encode(customerPassword);
+        
+        newUser.setUsername(customer.getUsername());
+        customer.setPassword(hashedPassword);
+        newUser.setPassword(hashedPassword);
+        newUser.setEnabled(true);
+        
         Authorities newAuthorities = new Authorities();
         newAuthorities.setUsername(customer.getUsername());
         newAuthorities.setAuthority("ROLE_USER");
 
         session.saveOrUpdate(newUser);
         session.saveOrUpdate(newAuthorities);
-
+        
         session.saveOrUpdate(customer);
 
         session.flush();

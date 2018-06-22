@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.petshop.dao.OrdersDao;
 import com.petshop.service.OrdersService;
+import java.util.List;
 
 /**
  *
@@ -24,5 +25,10 @@ public class OrderServiceImpl implements OrdersService{
     @Override
     public Orders addOrders(Orders orders) {
         return orderDao.addOrders(orders);
+    }
+
+    @Override
+    public List<Orders> getOrdersByUsername(String username) {
+        return orderDao.getOrdersByUsername(username);
     }
 }

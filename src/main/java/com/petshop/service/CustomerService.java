@@ -6,6 +6,7 @@
 package com.petshop.service;
 
 import com.petshop.model.Customer;
+import com.petshop.model.Users;
 import java.util.List;
 
 /**
@@ -17,8 +18,14 @@ public interface CustomerService {
     public void registerCustomer(Customer customer);
 
     public Customer getCustomerById(int customerId);
+    
+    public int banCustomer(String username);
+    
+    public int unbanCustomer(String username);
 
     public List<Customer> getAllCustomers();
+    
+    public List<Users> getAllUsers();
 
     public Customer getCustomerByUsername(String username);
 

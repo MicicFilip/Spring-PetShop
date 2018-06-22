@@ -6,6 +6,7 @@
 package com.petshop.dao;
 
 import com.petshop.model.Customer;
+import com.petshop.model.Users;
 import java.util.List;
 
 /**
@@ -17,7 +18,13 @@ public interface CustomerDao {
     public void registerCustomer(Customer customer);
 
     public Customer getCustomerById(int customerId);
+    
+    public int banCustomer(String username);
+    
+    public int unbanCustomer(String username);
 
+    public List<Users> getAllUsers();
+    
     public List<Customer> getAllCustomers();
 
     public Customer getCustomerByUsername(String username);

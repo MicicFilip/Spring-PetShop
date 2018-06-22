@@ -30,6 +30,20 @@ public class CustomerDaoImpl implements CustomerDao {
     @Autowired
     private SessionFactory sessionFactory;
 
+    //crated setter for the session
+    @Autowired
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    //crated getter for the session
+    public Session getSession() {
+        return sessionFactory.getCurrentSession();
+    }
+    
+//    @Autowired
+//    private SessionFactory sessionFactory;
+
     @Override
     public void registerCustomer(Customer customer) {
         Session session = sessionFactory.getCurrentSession();
@@ -60,6 +74,27 @@ public class CustomerDaoImpl implements CustomerDao {
         Session session = sessionFactory.getCurrentSession();
         return (Customer) session.get(Customer.class, customerId);
     }
+    
+    @Override
+    public int banCustomer(String username) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createSQLQuery("UPDATE users SET enabled = :enabled " + "WHERE username = :username");
+        query.setParameter("enabled", 0);
+        query.setParameter("username", username);
+        int result = query.executeUpdate();
+        return result;
+    }
+
+    @Override
+    public int unbanCustomer(String username) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createSQLQuery("UPDATE users SET enabled = :enabled " + "WHERE username = :username");
+        query.setParameter("enabled", 1);
+        query.setParameter("username", username);
+        int result = query.executeUpdate();
+
+        return result;
+    }
 
     @Override
     public List<Customer> getAllCustomers() {
@@ -68,6 +103,15 @@ public class CustomerDaoImpl implements CustomerDao {
         List<Customer> customerList = query.list();
 
         return customerList;
+    }
+    
+    @Override
+    public List<Users> getAllUsers() {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from Users");
+        List<Users> usersList = query.list();
+
+        return usersList;
     }
 
     @Override

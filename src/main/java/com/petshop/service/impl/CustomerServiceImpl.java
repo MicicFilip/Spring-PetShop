@@ -7,6 +7,7 @@ package com.petshop.service.impl;
 
 import com.petshop.dao.CustomerDao;
 import com.petshop.model.Customer;
+import com.petshop.model.Users;
 import com.petshop.service.CustomerService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +34,25 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public int banCustomer(String username) {
+        return customerDao.banCustomer(username);
+    }
+
+    @Override
+    public int unbanCustomer(String username) {
+        return customerDao.unbanCustomer(username);
+    }
+    
+    @Override
     public List<Customer> getAllCustomers() {
         return customerDao.getAllCustomers();
     }
 
+    @Override
+    public List<Users> getAllUsers() {
+        return customerDao.getAllUsers();
+    }
+    
     @Override
     public Customer getCustomerByUsername(String username) {
         return customerDao.getCustomerByUsername(username);

@@ -6,6 +6,7 @@
 package com.petshop.dao;
 
 import com.petshop.model.OrdersDetail;
+import java.util.List;
 
 /**
  *
@@ -14,4 +15,6 @@ import com.petshop.model.OrdersDetail;
 public interface OrdersDetailDao {
 
     public void addOrdersDetail(OrdersDetail ordersDetail);
+    
+    public List<OrdersDetail> getOrdersById(int id);
 }

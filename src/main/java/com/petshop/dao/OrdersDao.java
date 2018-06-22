@@ -6,6 +6,7 @@
 package com.petshop.dao;
 
 import com.petshop.model.Orders;
+import java.util.List;
 
 /**
  *
@@ -14,4 +15,6 @@ import com.petshop.model.Orders;
 public interface OrdersDao {
     
     public Orders addOrders(Orders orders);
+    
+    public List<Orders> getOrdersByUsername(String username);
 }

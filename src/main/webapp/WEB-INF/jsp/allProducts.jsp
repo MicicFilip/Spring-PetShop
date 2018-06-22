@@ -12,10 +12,17 @@
     <div class="container">
         <div id="two-columns" class="grid-container" style="display:block;">
             <ul class="rig columns-2">
-                <c:forEach items="${products}" var="product">
-                    
-                <li>
-                    <img src="${product.productImage}" />
+                <c:forEach items="${products}" var="product">     
+                <li> 
+                    <c:choose>
+                        <c:when test="${product.productImage != null}">
+                            <img src="${product.productImage}" />
+                        </c:when>
+                        <c:otherwise>
+                            <img src="<c:url value="/resources/images/404.png" />" />
+                        </c:otherwise>
+                    </c:choose>
+                   
                     <h2>${product.productName}</h2>
                     <h4>Category: ${product.productCategory}</h4>
                     <h4>Price: ${product.productPrice} RSD</h4>

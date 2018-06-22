@@ -6,6 +6,7 @@
 package com.petshop.service;
 
 import com.petshop.model.OrdersDetail;
+import java.util.List;
 
 /**
  *
@@ -14,5 +15,7 @@ import com.petshop.model.OrdersDetail;
 public interface OrdersDetailService {
 
     public void addOrdersDetail(OrdersDetail ordersDetail);
+    
+    public List<OrdersDetail> getOrdersById(int id);
     
 }

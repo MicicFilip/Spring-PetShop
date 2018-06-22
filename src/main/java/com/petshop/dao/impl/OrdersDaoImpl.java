@@ -12,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import com.petshop.dao.OrdersDao;
+import com.petshop.model.Customer;
+import java.util.List;
+import org.hibernate.Query;
 
 /**
  *
@@ -31,5 +34,15 @@ public class OrdersDaoImpl implements OrdersDao {
         session.flush();
         return orders;
 
+    }
+
+    @Override
+    public List<Orders> getOrdersByUsername(String username) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from Orders where username = ?");
+        query.setString(0, username);
+        List<Orders> ordersList = query.list();
+
+        return ordersList;
     }
 }

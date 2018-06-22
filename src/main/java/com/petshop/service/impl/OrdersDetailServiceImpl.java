@@ -8,6 +8,7 @@ package com.petshop.service.impl;
 import com.petshop.dao.OrdersDetailDao;
 import com.petshop.model.OrdersDetail;
 import com.petshop.service.OrdersDetailService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +25,10 @@ public class OrdersDetailServiceImpl implements OrdersDetailService {
     @Override
     public void addOrdersDetail(OrdersDetail ordersDetail) {
         ordersDetailDao.addOrdersDetail(ordersDetail);
+    }
+
+    @Override
+    public List<OrdersDetail> getOrdersById(int id) {
+        return ordersDetailDao.getOrdersById(id);
     }
 }

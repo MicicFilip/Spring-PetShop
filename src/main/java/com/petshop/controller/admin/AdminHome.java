@@ -7,6 +7,7 @@ package com.petshop.controller.admin;
 
 import com.petshop.model.Customer;
 import com.petshop.model.Product;
+import com.petshop.model.Users;
 
 import com.petshop.service.CustomerService;
 import com.petshop.service.ProductService;
@@ -45,10 +46,10 @@ public class AdminHome {
 
     @RequestMapping("/customer")
     public String customerManagerment(Model model) {
-
-        List<Customer> customerList = customerService.getAllCustomers();
-        model.addAttribute("customerList", customerList);
-
+        
+        List<Users> usersList = customerService.getAllUsers();
+        model.addAttribute("usersList", usersList);
+        
         return "customerManagement";
     }
 }

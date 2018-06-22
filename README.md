@@ -19,6 +19,7 @@ How to run the development environment:
 9. In your browser, navigate to [http://localhost:8084/PetShop/](http://localhost:8084/PetShop/)
 10. The Spring-Petshop web application should be up and running
 
+After everything has been setup, you can access regular customer account using `user1` as username and `user1` as password. If you want to access the admin account, use `admin1` as username and `admin1` as password.
 ## FAQ
 Problems with file upload location:
 If you encounter problems or bugs regarding file uploading, change the file location path in the `web.xml` file

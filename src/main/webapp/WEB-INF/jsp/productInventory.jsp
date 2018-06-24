@@ -32,6 +32,7 @@
                         <th>Proto Thumb</th>
                         <th>Product Name</th>
                         <th>Category</th>
+                        <th>Unit in Stock</th>
                         <th>Price</th>
                         <th>View Product</th>
                         <th>Remove Product</th>
@@ -43,6 +44,7 @@
                         <td><img src="${product.productImage}" alt="image" style="width:auto; max-height: 200px; height: 70%;"/></td>
                         <td>${product.productName}</td>
                         <td>${product.productCategory}</td>
+                        <td>${product.unitInStock}</td>
                         <td>${product.productPrice} RSD </td>
                         <td>
                             <a href="<spring:url value="/product/viewProduct/${product.productId}" />"><span class="glyphicon glyphicon-info-sign"></span></a>

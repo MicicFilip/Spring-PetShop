@@ -8,13 +8,10 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ include file="/WEB-INF/jsp/partials/header.jsp" %>
 
-
 <div class="container-wrapper">
     <div class="container">
         <div class="page-header">
             <h1>Product Detail</h1>
-
-
             <p class="lead">Here is the detail information of the product:</p>
         </div>
 
@@ -28,7 +25,8 @@
                     <p><strong>Manufacturer</strong>: ${product.productManufacturer}</p>
                     <p><strong>Category</strong>: ${product.productCategory}</p>
                     <p><strong>Price</strong>: ${product.productPrice} RSD</p>
-                    <p><strong>Description</strong>:${product.productDescription}</p>
+                    <p><strong>Description</strong>: ${product.productDescription}</p>
+                    <p><i>Only ${product.unitInStock} are left of ${product.productName}</i></p>
                     <br/>
                     
                     <a href="<c:url value = "/product/allProducts/all" />" class="btn btn-default">Back</a>
@@ -40,7 +38,5 @@
                 </div>
             </div>
         </div>
-
-
-
+                    
 <%@ include file="/WEB-INF/jsp/partials/footer.jsp" %>

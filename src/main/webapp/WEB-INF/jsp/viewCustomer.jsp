@@ -21,6 +21,7 @@
                 <div class="col-md-5">
                     <h3>Customer Name: ${customer.customerName}</h3>
                     <h3>Customer Email: ${customer.customerEmail}</h3>
+                    <h3>Customer Address: ${customer.customerStreetName}</h3>
                     <h3>Customer Phone: ${customer.customerPhone}</h3>
                     <h3>Customer City: ${customer.customerCity}</h3>
                 </div>
